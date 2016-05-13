@@ -1,0 +1,12 @@
+
+
+---
+ name: Demo of satMath
+ description: running the satMath object through its paces with Jasmine
+ author:
+   - Jason Wilson
+ resources:
+   - https://searls.github.com/jasmine-all/jasmine-all-min.js
+ normalize_css: no
+ ...
+
