@@ -1,4 +1,6 @@
-// SATMATH.js
+// demo.js
+//
+// Demo version of satMath for use in jsFiddle
 //
 // A collection of functions to determine footprint, coverage time and some other properties of a
 // satellite in orbit around Earth. Written in javascript because it's all I have available
