@@ -8,6 +8,17 @@
 // wilsonsofoxford.com
 //
 // MIT license
+//
+// If you're on https you may need to re-add the external resource https://searls.github.io/jasmine-all/jasmine-all-min.js
+
+
+if (typeof Object.create !== 'function') {
+    Object.create = function(o) {
+      function F() {}
+      F.prototype = o;
+      return new F();
+    };
+  }
 
 function Satellite(altitude, period) { //(number, number)
   //Make sure Object.create exists
@@ -57,8 +68,7 @@ function Satellite(altitude, period) { //(number, number)
 }
 
 
-var foo = "bar";
-
+//Test cases with Jasmine
 describe("Satellite", function() {
   //Checking the properties are all accessible
   it("hides its inner angle", function() {
@@ -124,8 +134,6 @@ describe("Satellite", function() {
     var n18 = Object.create(Satellite(854, 102.12));
     expect(n18.area(10)).toBeGreaterThan(54000000, 0);
   });
-
-
 
   //Tests the extremes
   it("can see up close", function() {
