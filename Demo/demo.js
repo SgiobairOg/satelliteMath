@@ -34,11 +34,11 @@ function Satellite(altitude, period) { //(number, number)
   const earthRadius = 6378.1; //kilometers
   const earthArea = 510100000; //kilometers
 
-  //Calculate footprint properties
-  this.innerAngle = Math.acos(earthRadius / (altitude + earthRadius)); //Calculate inner angle of the triangle tangent to the surface of the Earth
+  //Calculate private properties
+  var innerAngle = Math.acos(earthRadius / (altitude + earthRadius)); //Calculate inner angle of the triangle tangent to the surface of the Earth
+  var capHeight = earthRadius - (earthRadius * Math.cos(innerAngle)); //Calculate the height of the spherical cap in the satellite horizon
 
-  this.capHeight = earthRadius - (earthRadius * Math.cos(innerAngle)); //Calculate the height of the spherical cap in the satellite horizon
-
+	//Calculate public properties
   this.horizon = (earthRadius * Math.sin(innerAngle)); //Calculate the radius of the visible horizon
 
 
@@ -61,19 +61,19 @@ var foo = "bar";
 
 describe("Satellite", function() {
   //Checking the properties are all accessible
-  it("has an inner angle", function() {
+  it("hides its inner angle", function() {
     n18 = Object.create(Satellite(854, 102.12))
-    expect(n18.innerAngle).toBeDefined();
+    expect(n18.innerAngle).toBeUndefined();
   });
 
-  it("has a cap height", function() {
+  it("hides its cap height", function() {
     n18 = Object.create(Satellite(854, 102.12))
-    expect(n18.capHeight).toBeDefined();
+    expect(n18.capHeight).toBeUndefined();
   });
 
   it("has a horizon", function() {
     n18 = Object.create(Satellite(854, 102.12))
-    expect(n18.capHeight).toBeDefined();
+    expect(n18.horizon).toBeDefined();
   });
 
   //Traps too few arguments and altitude/period errors
